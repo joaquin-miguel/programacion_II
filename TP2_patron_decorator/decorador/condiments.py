@@ -2,7 +2,7 @@
 # Contiene el Decorador Abstracto y los Decoradores Concretos.
 
 from abc import ABC, abstractmethod
-from beverages import Beverage
+from .beverages import Beverage
 
 # --- Decorador Abstracto ---
 class CondimentDecorator(Beverage, ABC):
@@ -18,7 +18,9 @@ class CondimentDecorator(Beverage, ABC):
     def get_description(self) -> str:
         pass
 
+# -------------------------------------------------
 # --- Decoradores Concretos ---
+# -------------------------------------------------
 class Milk(CondimentDecorator):
     """
     Decorador para añadir Leche a una bebida.
@@ -58,3 +60,14 @@ class Whip(CondimentDecorator):
 
     def cost(self) -> float:
         return self._beverage.cost() + 0.10
+
+class Caramel(CondimentDecorator):
+    """
+    Decorador para añadir Caramelo a una bebida.
+    """
+
+    def get_description(self) -> str:
+        return self._beverage.get_description() + ", Caramelo"
+
+    def cost(self) -> float:
+        return self._beverage.cost() + 0.20
