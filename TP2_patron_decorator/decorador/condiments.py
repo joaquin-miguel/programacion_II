@@ -2,7 +2,7 @@
 # Contiene el Decorador Abstracto y los Decoradores Concretos.
 
 from abc import ABC, abstractmethod
-from .beverages import Beverage
+from beverages import Beverage
 
 # --- Decorador Abstracto ---
 class CondimentDecorator(Beverage, ABC):
@@ -14,13 +14,14 @@ class CondimentDecorator(Beverage, ABC):
     def __init__(self, beverage: Beverage):
         self._beverage = beverage
 
+    def get_size(self):
+        return self._beverage.get_size()
+
     @abstractmethod
     def get_description(self) -> str:
         pass
 
-# -------------------------------------------------
 # --- Decoradores Concretos ---
-# -------------------------------------------------
 class Milk(CondimentDecorator):
     """
     Decorador para añadir Leche a una bebida.
@@ -29,7 +30,14 @@ class Milk(CondimentDecorator):
         return self._beverage.get_description() + ", Leche"
 
     def cost(self) -> float:
-        return self._beverage.cost() + 0.10
+        size = self.get_size()
+        if size == Beverage.TALL:
+            extra = 0.10
+        elif size == Beverage.GRANDE:
+            extra = 0.15
+        else:  # VENTI
+            extra = 0.20
+        return self._beverage.cost() + extra
 
 class Mocha(CondimentDecorator):
     """
@@ -39,7 +47,14 @@ class Mocha(CondimentDecorator):
         return self._beverage.get_description() + ", Mocha"
 
     def cost(self) -> float:
-        return self._beverage.cost() + 0.20
+        size = self.get_size()
+        if size == Beverage.TALL:
+            extra = 0.20
+        elif size == Beverage.GRANDE:
+            extra = 0.25
+        else:  # VENTI
+            extra = 0.30
+        return self._beverage.cost() + extra
 
 class Soy(CondimentDecorator):
     """
@@ -49,7 +64,14 @@ class Soy(CondimentDecorator):
         return self._beverage.get_description() + ", Soja"
 
     def cost(self) -> float:
-        return self._beverage.cost() + 0.15
+        size = self.get_size()
+        if size == Beverage.TALL:
+            extra = 0.10
+        elif size == Beverage.GRANDE:
+            extra = 0.20
+        else:  # VENTI
+            extra = 0.25
+        return self._beverage.cost() + extra
 
 class Whip(CondimentDecorator):
     """
@@ -59,13 +81,19 @@ class Whip(CondimentDecorator):
         return self._beverage.get_description() + ", Crema"
 
     def cost(self) -> float:
-        return self._beverage.cost() + 0.10
+        size = self.get_size()
+        if size == Beverage.TALL:
+            extra = 0.10
+        elif size == Beverage.GRANDE:
+            extra = 0.15
+        else:  # VENTI
+            extra = 0.20
+        return self._beverage.cost() + extra
 
 class Caramel(CondimentDecorator):
     """
-    Decorador para añadir Caramelo a una bebida.
+    Decorador para añadir Caramel a una bebida.
     """
-
     def get_description(self) -> str:
         return self._beverage.get_description() + ", Caramelo"
 
