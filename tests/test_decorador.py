@@ -1,12 +1,14 @@
 import pytest
-from TP2_patron_decorator.decorador.beverages import Espresso
-from TP2_patron_decorator.decorador.condiments import Mocha, Whip, Soy, Caramel
+from TP2_patron_decorator.decorador.beverages import Espresso, Beverage
+from TP2_patron_decorator.decorador.condiments import Whip, Mocha, Caramel
+from TP2_patron_decorator.decorador.builder import build_beverage
 
 def test_espresso_doble_caramelo_y_whip():
-    pedido1 = Espresso()
-    pedido1 = Caramel(pedido1)
-    pedido1 = Caramel(pedido1)
-    pedido1 = Whip(pedido1)
-    assert pedido1.get_description() == "Espresso, Caramelo, Caramelo, Crema"
-    assert pedido1.cost() == 1.99 + 0.20 + 0.20 + 0.10
+    pedido_1 = build_beverage(Espresso, Beverage.TALL, [Whip, Mocha,  Whip, Caramel, Mocha, Whip])
+    
+    assert pedido_1.get_description() == "Espresso Tall, Crema, Mocha, Crema, Caramelo, Mocha, Crema"
+    assert pedido_1.pretty_descripcion() == 'Espresso Tall, Triple Crema, Doble Mocha, Caramelo'
+    assert pedido_1.cost() == 1.99 + 0.1 + 0.1 + 0.1 + 0.2 + 0.2 + 0.2
+    
+
 

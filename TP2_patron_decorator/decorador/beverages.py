@@ -21,7 +21,36 @@ class Beverage(ABC):
         """
         Devuelve la descripción de la bebida.
         """
-        return self.description
+        return f'{self.description} {self.get_size()}'
+
+    def pretty_descripcion(self):
+        lista_condimentos: list = self.get_description().split(', ')
+
+        # Guardo el tipo de Bebida
+        descripcion: str = lista_condimentos[0]
+
+        lista_condimentos.remove(descripcion)
+
+        zip_condimentos = zip(lista_condimentos,
+                              map(lambda condimento:
+                                  lista_condimentos.count(condimento)
+                                  , lista_condimentos)
+        )
+
+        dict_condimentos = dict(zip_condimentos)
+
+        for condimento, value in dict_condimentos.items():
+            match value:
+                case 1:
+                    descripcion += f', {condimento}'
+                case 2:
+                    descripcion += f', Doble {condimento}'
+                case 3:
+                    descripcion += f', Triple {condimento}'
+                case _:
+                    print('es un monton')
+
+        return descripcion
 
     def set_size(self, size: str):
         self.size = size
