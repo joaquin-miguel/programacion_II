@@ -13,9 +13,9 @@ class Beverage(ABC):
     GRANDE = "Grande"
     VENTI = "Venti"
 
-    def __init__(self):
+    def __init__(self, size = TALL):
         self.description = "Bebida Desconocida"
-        self.size = Beverage.TALL  # valor por defecto
+        self.size = size
 
     def get_description(self) -> str:
         """

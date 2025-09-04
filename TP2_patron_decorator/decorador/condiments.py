@@ -60,6 +60,7 @@ class Soy(CondimentDecorator):
     """
     Decorador para añadir Soja a una bebida.
     """
+
     def get_description(self) -> str:
         return self._beverage.get_description() + ", Soja"
 
