@@ -1,5 +1,5 @@
-from .beverages import Beverage
-from .condiments import CondimentDecorator
+from beverages import Beverage
+from condiments import CondimentDecorator
 from typing import Type
 
 
