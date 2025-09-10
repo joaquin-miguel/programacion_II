@@ -28,3 +28,28 @@ class ClamPizza(Pizza):
         self.cheese=self.f.create_cheese(); 
         self.clam=self.f.create_clam()
         print(" ->", self.dough, "/", self.sauce, "/", self.cheese, "/", self.clam)
+
+# Se crean las clases `VeggiePizza` y `PepperoniPizza`.
+class VeggiePizza(Pizza):
+    def __init__(self, name: str, ingredient_factory):
+        super().__init__(name, ingredient_factory)
+
+    def prepare(self):
+        print(f"Preparing {self.name}")
+        self.dough = self.ingredient_factory.create_dough()
+        self.sauce = self.ingredient_factory.create_sauce()
+        self.cheese = self.ingredient_factory.create_cheese()
+        self.veggies = self.ingredient_factory.create_veggies()
+        print(" ->", self.dough, "/", self.sauce, "/", self.cheese, "/", self.veggies)  
+
+class PepperoniPizza(Pizza):
+    def __init__(self, name: str, ingredient_factory):
+        super().__init__(name, ingredient_factory)
+
+    def prepare(self):
+        print(f"Preparing {self.name}")
+        self.dough = self.ingredient_factory.create_dough()
+        self.sauce = self.ingredient_factory.create_sauce()
+        self.cheese = self.ingredient_factory.create_cheese()
+        self.pepperoni = self.ingredient_factory.create_pepperoni()
+        print(" ->", self.dough, "/", self.sauce, "/", self.cheese, "/", self.pepperoni)
