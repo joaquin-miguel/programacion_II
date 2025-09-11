@@ -20,12 +20,13 @@ class Cheese:
         self.name=name;  
     def __str__(self): 
         return self.name
+    
 class Clams:    
     def __init__(self, name): 
         self.name=name;  
-    
     def __str__(self): 
         return self.name
+    
 # Se agregan dos nuevos ingredientes abstractos
 class Veggies(ABC):
     @abstractmethod
@@ -40,7 +41,6 @@ class Pepperoni(ABC):
 class Onion(Veggies):
     def __str__(self): return "Onion"
 
-
 class Mushroom(Veggies):
     def __str__(self): return "Mushroom"
 
@@ -49,7 +49,6 @@ class Garlic(Veggies):
 
 class Spinach(Veggies):
     def __str__(self): return "Spinach"
-
 
 class BlackOlives(Veggies):
     def __str__(self): return "Black Olives"

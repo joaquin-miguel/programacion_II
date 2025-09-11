@@ -36,10 +36,10 @@ class VeggiePizza(Pizza):
 
     def prepare(self):
         print(f"Preparing {self.name}")
-        self.dough = self.ingredient_factory.create_dough()
-        self.sauce = self.ingredient_factory.create_sauce()
-        self.cheese = self.ingredient_factory.create_cheese()
-        self.veggies = self.ingredient_factory.create_veggies()
+        self.dough = self.f.create_dough()
+        self.sauce = self.f.create_sauce()
+        self.cheese = self.f.create_cheese()
+        self.veggies = self.f.create_veggies()
         print(" ->", self.dough, "/", self.sauce, "/", self.cheese, "/", self.veggies)  
 
 class PepperoniPizza(Pizza):
@@ -48,8 +48,8 @@ class PepperoniPizza(Pizza):
 
     def prepare(self):
         print(f"Preparing {self.name}")
-        self.dough = self.ingredient_factory.create_dough()
-        self.sauce = self.ingredient_factory.create_sauce()
-        self.cheese = self.ingredient_factory.create_cheese()
-        self.pepperoni = self.ingredient_factory.create_pepperoni()
+        self.dough = self.f.create_dough()
+        self.sauce = self.f.create_sauce()
+        self.cheese = self.f.create_cheese()
+        self.pepperoni = self.f.create_pepperoni()
         print(" ->", self.dough, "/", self.sauce, "/", self.cheese, "/", self.pepperoni)
