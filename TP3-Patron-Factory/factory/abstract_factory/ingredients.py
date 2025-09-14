@@ -3,64 +3,73 @@ from abc import ABC, abstractmethod
 # Ingredient products
 class Dough:    
     def __init__(self, name): 
-        self.name=name;
-      
+        self.name=name
     def __str__(self): 
         return self.name
 
 class Sauce:    
     def __init__(self, name): 
-        self.name=name; 
-     
+        self.name=name
     def __str__(self): 
         return self.name
 
 class Cheese:   
     def __init__(self, name): 
-        self.name=name;  
+        self.name=name  
     def __str__(self): 
         return self.name
     
 class Clams:    
     def __init__(self, name): 
-        self.name=name;  
+        self.name=name
     def __str__(self): 
         return self.name
     
 # Se agregan dos nuevos ingredientes abstractos
+
 class Veggies(ABC):
-    @abstractmethod
-    def __str__(self) -> str: ...
+    def __str__(self):
+        return self.__class__.__name__
+    def __repr__(self):
+        return str(self)
 
 class Pepperoni(ABC):
-    @abstractmethod
-    def __str__(self) -> str: ...
+    def __str__(self):
+        return self.__class__.__name__
+    def __repr__(self):
+        return str(self) 
 
 # Se agregan clasen concretas de Veggies
 
 class Onion(Veggies):
-    def __str__(self): return "Onion"
+    def __str__(self):
+        return "Onion"
 
 class Mushroom(Veggies):
-    def __str__(self): return "Mushroom"
+    def __str__(self):
+        return "Mushroom"
 
 class Garlic(Veggies):
-    def __str__(self): return "Garlic"
+    def __str__(self):
+        return "Garlic"
 
 class Spinach(Veggies):
-    def __str__(self): return "Spinach"
+    def __str__(self):
+        return "Spinach"
 
 class BlackOlives(Veggies):
-    def __str__(self): return "Black Olives"
-
+    def __str__(self):
+        return "Black Olives"
 
 class RedPepper(Veggies):
-    def __str__(self): return "Red Pepper"
+    def __str__(self):
+        return "Red Pepper"
 
 # Se agrega clase concreta de Pepperoni
 
 class SlicedPepperoni(Pepperoni):
-    def __str__(self): return "Sliced Pepperoni"
+    def __str__(self):
+        return "Sliced Pepperoni"
 
 # Abstract Factory
 class PizzaIngredientFactory(ABC):
