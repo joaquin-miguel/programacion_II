@@ -2,7 +2,7 @@
 # Contiene el Decorador Abstracto y los Decoradores Concretos.
 
 from abc import ABC, abstractmethod
-from .beverages import Beverage
+from beverages import Beverage
 
 # --- Decorador Abstracto ---
 class CondimentDecorator(Beverage, ABC):
